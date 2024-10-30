@@ -1,41 +1,36 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <VersionPrefix>1.10.7</VersionPrefix>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <TargetFrameworks Condition=" '$(OS)' != 'Windows_NT' ">netstandard2.1;net6.0;net8.0</TargetFrameworks>
+        <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">net472;netstandard2.1;net6.0;net8.0</TargetFrameworks>
         <NoWarn>$(NoWarn);CS0618</NoWarn>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <AssemblyName>Hangfire.Mongo</AssemblyName>
         <PackageId>Hangfire.Mongo</PackageId>
-        <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
-        <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
-        <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
-        <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
-        <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-        <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
-        <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
-        <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
-        <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
         <title>Hangfire MongoDB Storage</title>
         <owners>Sergey Zwezdin, Jonas Gottschau</owners>
         <Description>MongoDB storage implementation for Hangfire (background job system for ASP.NET applications).</Description>
         <PackageTags>Hangfire AspNet OWIN MongoDB CosmosDB Long-Running Background Fire-And-Forget Delayed Recurring Tasks Jobs Scheduler Threading Queues</PackageTags>
-        <PackageReleaseNotes>1.10.7
-            - Update to Hangfire 1.8.14
-            - Update to MongoDB 2.26.0
+        <PackageReleaseNotes>1.11.0
+            - Update to MongoDB 3.0
         </PackageReleaseNotes>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <!--<PackageLicenseUrl>https://raw.githubusercontent.com/sergun/Hangfire.Mongo/master/LICENSE</PackageLicenseUrl>-->
         <PackageProjectUrl>https://github.com/sergeyzwezdin/Hangfire.Mongo</PackageProjectUrl>
         <Authors>Sergey Zwezdin, Martin Lobger, Jonas Gottschau</Authors>
-        <LangVersion>latestmajor</LangVersion>
+        <LangVersion>default</LangVersion>
     </PropertyGroup>
     <ItemGroup>
         <None Include="../../README.md" pack="true" PackagePath="." />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Hangfire.Core" Version="1.8.14" />
-        <PackageReference Include="MongoDB.Driver" Version="2.26.0" />
+        <PackageReference Include="Hangfire.Core" Version="1.8.15" />
+        <PackageReference Include="MongoDB.Driver" Version="3.0.0" />
+    </ItemGroup>
+    <ItemGroup>
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+            <_Parameter1>Hangfire.Mongo.Tests</_Parameter1>
+        </AssemblyAttribute>
     </ItemGroup>
 </Project>
